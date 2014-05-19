@@ -1,0 +1,135 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:300);
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: Oswald, sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+}
+
+/* header */
+
+header {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+  margin-top: 10%;
+  text-align: center;
+}
+
+h1 img {
+  width: 500px;
+}
+
+.view {
+  opacity: 0.8;
+}
+
+.view:hover {
+  opacity: 1;
+}
+
+.social {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  z-index: 2;
+}
+
+/* footer */
+
+footer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  opacity: 0.8;
+}
+
+footer p {
+  margin: 10px;
+}
+
+.studio {
+  float: right;
+}
+
+.studio img {
+  height: 16px;
+}
+
+.copyright {
+  float: left;
+}
+
+/* contents */
+
+.contents {
+  position: absolute;
+  display: none; /*table;*/
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  vertical-align: middle;
+  z-index: 1;
+}
+
+.contents .nav {
+  position: absolute;
+  top: 50%;
+  margin-top: -60px;
+  width: 100%;
+}
+
+.contents .nav a {
+  position: absolute;
+  width: 150px;
+  height: 300px;
+  opacity: 0.5;
+}
+
+.contents .nav a:hover {
+  opacity: 1;
+}
+
+.contents .nav .prev {
+  left: 10px;
+  text-align: left;
+}
+
+.contents .nav .next {
+  right: 10px;
+  text-align: right;
+}
+
+.contents .viewport {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.contents article > * {
+  max-width: 80%;
+  min-width: 600px;
+  height: auto;
+}
