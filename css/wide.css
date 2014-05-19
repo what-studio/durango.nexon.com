@@ -27,7 +27,7 @@ video {
 /* header */
 
 header {
-  display: table-cell;
+  display: none;
   vertical-align: middle;
   height: 100%;
   margin-top: 10%;

@@ -57,11 +57,6 @@ $('article, .viewport').on('click', function(e) {
   return false;
 });
 
-// i18n
-var locale = null;
-if (/ko/.exec(navigator.language)) {
-  locale = 'ko';
-}
-var data = i18n[locale];
-document.title = data.title;
-$('h1 img').attr({src: data.logo, alt: data.title});
+$(window).on('load', function() {
+  $('header').css({display: 'table-cell'}).hide().fadeIn();
+});
