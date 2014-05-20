@@ -42,11 +42,12 @@ History.Adapter.bind(window, 'anchorchange', function() {
   }
   // video
   if (!hash) {
+    _ga('send', 'pageview', '/');
     hide($contents);
     $video.get(0).play();
-    _ga('send', 'pageview', '/');
     return;
   } else {
+    _ga('send', 'pageview', '/#' + hash);
     show($contents);
     $video.get(0).pause();
     $view.attr({href: '#' + hash});
@@ -54,7 +55,6 @@ History.Adapter.bind(window, 'anchorchange', function() {
   // content
   var $articles = hide($contents.find('article'));
   var $article = show($contents.find('#' + hash));
-  _ga('send', 'pageview', '/#' + hash); 
   // navigators
   var $prevArticle = $article.prev();
   var $nextArticle = $article.next();
