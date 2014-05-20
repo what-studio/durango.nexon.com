@@ -78,6 +78,9 @@ $('article, .viewport').on('click', function(e) {
 });
 
 $win.on('keydown', function(e) {
+  if (!$contents.is(':visible')) {
+    return;
+  }
   var $nav;
   if ($.inArray(e.keyCode, [37, 72, 75]) !== -1) {
     // left or h or k
@@ -85,6 +88,9 @@ $win.on('keydown', function(e) {
   } else if ($.inArray(e.keyCode, [39, 74, 76]) !== -1) {
     // right or j or l
     $nav = $('.nav .next');
+  } else if (e.keyCode === 27) {
+    // esc
+    $('.article, .viewport').click();
   } else {
     return;
   }
