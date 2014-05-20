@@ -1,13 +1,8 @@
-@import url(http://fonts.googleapis.com/css?family=Oswald:300);
-
 html {
   height: 100%;
 }
 
 body {
-  font-family: Oswald, sans-serif;
-  font-weight: 300;
-  font-size: 12px;
   width: 100%;
   height: 100%;
   display: table;
@@ -21,21 +16,18 @@ video {
   min-height: 100%;
   width: auto;
   height: auto;
+  margin: 0 auto;
   z-index: -100;
 }
 
 /* header */
 
 header {
-  display: none;
+  display: table-cell;
   vertical-align: middle;
   height: 100%;
   margin-top: 10%;
   text-align: center;
-}
-
-h1 img {
-  width: 500px;
 }
 
 .view {
@@ -48,8 +40,8 @@ h1 img {
 
 .social {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  top: 0;
+  left: 0;
   padding: 10px;
   z-index: 2;
 }
@@ -59,53 +51,48 @@ h1 img {
 footer {
   position: fixed;
   left: 0;
-  top: 0;
+  bottom: 10px;
   width: 100%;
   opacity: 0.8;
+  text-align: center;
+  line-height: 20px;
 }
 
 footer p {
-  margin: 10px;
+  display: inline;
 }
 
-.studio {
-  float: right;
-}
-
-.studio img {
-  height: 16px;
-}
-
-.copyright {
-  float: left;
+footer img {
+  vertical-align: middle;
+  margin-right: 5px;
 }
 
 /* contents */
 
 .contents {
   position: absolute;
-  display: none; /*table;*/
+  display: none;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   text-align: center;
   vertical-align: middle;
   z-index: 1;
 }
 
-.contents .nav {
-  position: absolute;
-  top: 50%;
-  margin-top: -60px;
-  width: 100%;
+.contents.active {
+  display: table;
 }
 
 .contents .nav a {
   position: absolute;
   width: 150px;
   height: 300px;
+  top: 50%;
+  margin-top: -150px;
+  padding: 10px;
   opacity: 0.5;
 }
 
@@ -114,22 +101,44 @@ footer p {
 }
 
 .contents .nav .prev {
-  left: 10px;
+  left: 0;
   text-align: left;
 }
 
 .contents .nav .next {
-  right: 10px;
+  right: 0;
   text-align: right;
+}
+
+.contents .nav img {
+  margin-top: 90px;
 }
 
 .contents .viewport {
   display: table-cell;
   vertical-align: middle;
+  padding: 50px 0;
 }
 
-.contents article > * {
-  max-width: 80%;
+.contents article {
+  display: none;
+  margin: 0 10%;
+}
+
+.contents article.active {
+  display: block;
+}
+
+.contents article .content {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.contents article img.content {
+  width: 100%;
+  cursor: -webkit-zoom-in;
+}
+
+.contents article .youtube.content {
+  max-width: 100%;
   min-width: 600px;
-  height: auto;
 }

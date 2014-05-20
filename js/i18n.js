@@ -9,4 +9,7 @@ if (/ko/.exec(navigator.language || navigator.userLanguage)) {
 }
 var data = i18n[locale];
 document.title = data.title;
-$('h1 img').attr({src: data.logo, alt: data.title});
+$('h1 img')
+  .attr({src: ''})
+  .attr({src: data.logo, alt: data.title})
+  .on('load', function() { $(document.body).addClass('active'); });

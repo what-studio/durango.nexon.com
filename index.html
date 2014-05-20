@@ -2,19 +2,33 @@
 <html charset="utf-8">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <title>Durango</title>
+    <link rel="shortcut icon" type="image/icon" href="favicon.ico" />
     <link rel="stylesheet" type="text/css" href="css/common.css" />
-    <link rel="stylesheet" type="text/css"
-      href="css/wide.css" media="screen and (min-width: 480px)" />
-    <!-- link rel="stylesheet" type="text/css"
-      href="mobile.css" media="screen and (max-width: 480px)" / -->
+    <link rel="stylesheet" type="text/css" href="css/rich.css"
+      media="screen and (min-width: 769px)" />
+    <link rel="stylesheet" type="text/css" href="css/simple.css"
+      media="screen and (max-width: 768px)" />
+    <!--[if lt IE 9]>
+      <link rel="stylesheet" type="text/css" href="css/simple.css" />
+    <![endif]-->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
       </script>
     <![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js">
+    </script>
+    <script>
+      WebFont.load({google: {families: ['Roboto Condensed:300']}});
+    </script>
   </head>
   <body>
+    <!--[if lt IE 9]>
+      <script>document.body.setAttribute('class', 'ltie9');</script>
+    <![endif]-->
     <video autoplay loop>
       <source src="video/bg.mp4" type="video/mp4" />
       <!-- source src=".ogv" type="video/ogg" / -->
@@ -22,9 +36,6 @@
     <header>
       <h1><img src="img/logo-en.png" alt="Durango" /></h1>
       <a class="view" href="#teaser"><img src="img/view.png" alt="View" /></a>
-      <div class="social">
-        <img src="tmp/social.png" />
-      </div>
     </header>
     <section class="contents">
       <div class="nav">
@@ -33,24 +44,58 @@
       </div>
       <div class="viewport">
         <article id="teaser">
-          <img src="tmp/youtube.png" />
+          <div class="youtube content">
+            <iframe width="960" height="540" frameborder="0" src="
+              //www.youtube.com/embed/mzuxNCNqwws?
+              rel=0&amp;showinfo=0&amp;autohide=0"
+              allowfullscreen="true"></iframe>
+          </div>
         </article>
-        <article id="teaser2">
-          <img src="tmp/youtube.png" width="1280" height="720" />
+        <article id="concept-art-1">
+          <a href="resources/1.jpg" target="_blank">
+            <img src="resources/1.jpg" class="content" /></a>
         </article>
+        <article id="concept-art-2">
+          <a href="resources/2.jpg" target="_blank">
+            <img src="resources/2.jpg" class="content" /></a>
+        </article>
+        <article id="concept-art-3">
+          <a href="resources/3.jpg" target="_blank">
+            <img src="resources/3.jpg" class="content" /></a>
+        </article>
+        <article id="concept-art-4">
+          <a href="resources/4.jpg" target="_blank">
+            <img src="resources/4.jpg" class="content" /></a>
+        </article>
+      </div>
+    </section>
+    <section class="social">
+      <div id="fb-root">
+        <div class="fb-like"
+          data-href="http://example.org/"
+          data-action="like"
+          data-layout="button_count"
+          data-show-faces="false"
+          data-share="false"></div>
+      </div>
+      <div class="twitter-share">
+        <a href="https://twitter.com/share" class="twitter-share-button"
+          data-url="http://example.org/" data-text="Durango">Tweet</a>
       </div>
     </section>
     <footer>
       <p class="studio">
-        <img src="img/what-studio.png" alt="What! Studio" />
+        <img src="img/what-studio.png" alt="What! Studio" height="16" />
       </p>
       <p class="copyright">
-        &copy; <span class="year">2014</span> Nexon, Corp.
+        &copy; <span class="year">2014</span> Nexon Corp.
       </p>
     </footer>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/history.js/1.8/native.history.min.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/social.js"></script>
+    <script src="js/ga.js"></script>
   </body>
 </html>

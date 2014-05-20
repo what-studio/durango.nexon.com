@@ -4,10 +4,59 @@
 }
 
 body {
-  background: #000;
+  background: #222;
   color: #fff;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1;
+  visibility: hidden;
+}
+
+body.active {
+  visibility: visible;
 }
 
 a:link img, a:visited img {
   border: none;
+}
+
+.social {
+  line-height: 1;
+  overflow: hidden;
+  font-size: 0;
+  color: rgba(0, 0, 0, 0);
+}
+
+.social > div {
+  display: block;
+  float: left;
+  margin-right: 5px;
+}
+
+.social .fb-like {
+  width: auto !important;
+}
+
+.youtube {
+  position: relative;
+  overflow: hidden;
+  height: 0;
+  margin: 0 auto;
+}
+
+.youtube iframe, .youtube object, .youtube embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+footer {
+  display: none;
+}
+
+.wf-active footer, .wf-inactive footer {
+  font-family: 'Roboto Condensed', sans-serif;
+  display: block;
 }
