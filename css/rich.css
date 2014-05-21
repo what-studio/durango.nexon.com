@@ -17,12 +17,12 @@ video {
   width: auto;
   height: auto;
   margin: 0 auto;
-  z-index: -100;
 }
 
 /* header */
 
 header {
+  position: relative;
   display: table-cell;
   vertical-align: middle;
   height: 100%;
@@ -136,6 +136,8 @@ footer img {
 .contents article img.content {
   width: 100%;
   cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in;
 }
 
 .contents article .youtube.content {

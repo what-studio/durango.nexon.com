@@ -47,7 +47,7 @@ History.Adapter.bind(window, 'anchorchange', function() {
     $video.get(0).play();
     return;
   } else {
-    _ga('send', 'pageview', '/#' + hash);
+    _ga('send', 'pageview', '/#' + hash, '/#' + hash);
     show($contents);
     $video.get(0).pause();
     $view.attr({href: '#' + hash});
@@ -74,7 +74,13 @@ $('article, .viewport').on('click', function(e) {
   }
   location.href = '#';
   History.Adapter.trigger(window, 'anchorchange');
-  return false;
+  e.preventDefault();
+});
+
+$('article img.content').each(function() {
+  var $img = $(this);
+  var $link = $('<a target="_blank">').attr({href: $img.attr('src')});
+  $img.wrap($link);
 });
 
 $win.on('keydown', function(e) {
@@ -82,15 +88,16 @@ $win.on('keydown', function(e) {
     return;
   }
   var $nav;
-  if ($.inArray(e.keyCode, [37, 72, 75]) !== -1) {
-    // left or h or k
+  if ($.inArray(e.keyCode, [37, 38, 65, 87, 72, 75]) !== -1) {
+    // left|top or a|w or h|k
     $nav = $('.nav .prev');
-  } else if ($.inArray(e.keyCode, [39, 74, 76]) !== -1) {
-    // right or j or l
+  } else if ($.inArray(e.keyCode, [39, 40, 68, 83, 74, 76]) !== -1) {
+    // right|down or d|s or j|l
     $nav = $('.nav .next');
   } else if (e.keyCode === 27) {
     // esc
     $('.article, .viewport').click();
+    return;
   } else {
     return;
   }
@@ -105,9 +112,18 @@ $win.on('keydown', function(e) {
 $win.on('resize', function() {
   // centralize the background video
   var $parent = $video.parent();
+  var width = $video.width();
+  var height = $video.height();
+  var aspectRatio = width / height;
+  var expectedAspectRatio = Number($video.attr('width')) /
+                            Number($video.attr('height'));
+  if (Math.abs(expectedAspectRatio - aspectRatio) > 0.01) {
+    setTimeout($.proxy(arguments.callee, this), 1);
+    return;
+  }
   $video.css({
-    left: Math.min(0, ($parent.width() - $video.width()) / 2),
-    top: Math.min(0, ($parent.height() - $video.height()) / 2)
+    left: Math.min(0, ($parent.width() - width) / 2),
+    top: Math.min(0, ($parent.height() - height) / 2)
   });
 }).trigger('resize');
 
