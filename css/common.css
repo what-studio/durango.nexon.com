@@ -42,6 +42,7 @@ a:link img, a:visited img {
   overflow: hidden;
   height: 0;
   margin: 0 auto;
+  background: #000;
 }
 
 .youtube iframe, .youtube object, .youtube embed {
