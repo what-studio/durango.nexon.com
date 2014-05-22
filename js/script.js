@@ -31,18 +31,21 @@ function hide($elem) {
   return $elem.removeClass('active');
 }
 
-function deactivateYoutube() {
-  var $youtube = $(this);
-  var $iframe = $youtube.find('iframe');
-  if ($iframe.length) {
-    $youtube.data('iframe', $iframe);
-    $iframe.remove();
-  }
-}
-
-function activateYoutube() {
-  var $youtube = $(this);
-  $youtube.append($youtube.data('iframe'));
+function switchYoutube() {
+  // remove invisible youtube element
+  var $youtubes = $('.youtube');
+  $youtubes.each(function() {
+    var $youtube = $(this);
+    var $iframe = $youtube.find('iframe');
+    if ($iframe.length) {
+      $youtube.data('iframe', $iframe);
+    }
+    if ($youtube.is(':hidden')) {
+      $iframe.remove();
+    } else if (!$iframe.length) {
+      $youtube.append($youtube.data('iframe'));
+    }
+  });
 }
 
 var _prevHash = null;
@@ -59,7 +62,7 @@ History.Adapter.bind(window, 'anchorchange', function() {
     _ga('send', 'pageview', '/');
     hide($contents);
     $video.get(0).play();
-    $('.youtube').each(deactivateYoutube);
+    switchYoutube();
     return;
   } else {
     _ga('send', 'pageview', '/#' + hash, '/#' + hash);
@@ -70,8 +73,7 @@ History.Adapter.bind(window, 'anchorchange', function() {
   // content
   var $articles = hide($contents.find('article'));
   var $article = show($contents.find('#' + hash));
-  $articles.find('.youtube').each(deactivateYoutube);
-  activateYoutube.call($article.find('.youtube'));
+  switchYoutube();
   // navigators
   var $prevArticle = $article.prev();
   var $nextArticle = $article.next();
@@ -142,6 +144,7 @@ $win.on('resize', function() {
     left: Math.min(0, ($parent.width() - width) / 2),
     top: Math.min(0, ($parent.height() - height) / 2)
   });
+  switchYoutube();
 });
 
 $('.youtube').each(function() {
