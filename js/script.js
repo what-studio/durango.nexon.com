@@ -37,7 +37,7 @@ function switchYoutube() {
     var $youtube = $(this);
     if ($youtube.is(':hidden')) {
       $youtube.find('iframe').remove();
-    } else {
+    } else if (!$youtube.find('iframe').length) {
       var $iframe = $('<iframe frameborder="0" allowfullscreen="true">');
       var youtube = $youtube.data('youtube');
       $iframe.attr({
