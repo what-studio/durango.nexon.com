@@ -31,6 +31,20 @@ function hide($elem) {
   return $elem.removeClass('active');
 }
 
+function deactivateYoutube() {
+  var $youtube = $(this);
+  var $iframe = $youtube.find('iframe');
+  if ($iframe.length) {
+    $youtube.data('iframe', $iframe);
+    $iframe.remove();
+  }
+}
+
+function activateYoutube() {
+  var $youtube = $(this);
+  $youtube.append($youtube.data('iframe'));
+}
+
 var _prevHash = null;
 History.Adapter.bind(window, 'anchorchange', function() {
   var hash = History.getHash();
@@ -45,6 +59,7 @@ History.Adapter.bind(window, 'anchorchange', function() {
     _ga('send', 'pageview', '/');
     hide($contents);
     $video.get(0).play();
+    $('.youtube').each(deactivateYoutube);
     return;
   } else {
     _ga('send', 'pageview', '/#' + hash, '/#' + hash);
@@ -55,6 +70,8 @@ History.Adapter.bind(window, 'anchorchange', function() {
   // content
   var $articles = hide($contents.find('article'));
   var $article = show($contents.find('#' + hash));
+  $articles.find('.youtube').each(deactivateYoutube);
+  activateYoutube.call($article.find('.youtube'));
   // navigators
   var $prevArticle = $article.prev();
   var $nextArticle = $article.next();
