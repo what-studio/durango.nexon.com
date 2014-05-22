@@ -22,7 +22,6 @@ a:link img, a:visited img {
 
 .social {
   line-height: 1;
-  overflow: hidden;
   font-size: 0;
   color: rgba(0, 0, 0, 0);
 }
