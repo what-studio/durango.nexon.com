@@ -125,7 +125,7 @@ $win.on('resize', function() {
     left: Math.min(0, ($parent.width() - width) / 2),
     top: Math.min(0, ($parent.height() - height) / 2)
   });
-}).trigger('resize');
+});
 
 $('.youtube').each(function() {
   var $youtube = $(this);
@@ -174,3 +174,5 @@ if ($body.hasClass('ltie9')) {
   $imgs.filter(':gt(0)').hide();
   setInterval(bgAnimation, 5000);
 }
+
+$win.trigger('resize');
