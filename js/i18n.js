@@ -7,7 +7,7 @@ var locale = null;
 if (/ko/.exec(navigator.language || navigator.userLanguage)) {
   locale = 'ko';
 }
-var data = i18n[locale];
+var data = i18n[locale]; //locale];
 document.title = data.title;
 $('h1 img')
   .attr({src: ''})

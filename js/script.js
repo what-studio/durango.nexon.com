@@ -133,3 +133,44 @@ $('.youtube').each(function() {
   var aspectRatio = $embed.attr('height') / $embed.attr('width');
   $youtube.css({paddingBottom: aspectRatio * 100 + '%'});
 });
+
+// less than IE9
+if ($body.hasClass('ltie9')) {
+  var $bg = $('<div class="bg">');
+  $bg.append('<img src="bg/bg1.jpg" />');
+  $bg.append('<img src="bg/bg2.jpg" />');
+  $bg.append('<img src="bg/bg3.jpg" />');
+  $bg.append('<img src="bg/bg4.jpg" />');
+  $bg.append('<img src="bg/bg5.jpg" />');
+  $bg.append('<img src="bg/bg6.jpg" />');
+  $('video').replaceWith($bg);
+  var $imgs = $('.bg img');
+  $win.on('resize', function() {
+    var width = $imgs.width();
+    var height = $imgs.height();
+    var aspectRatio = width / height;
+    var bgWidth = $bg.width();
+    var bgHeight = $bg.height();
+    var bgAspectRatio = bgWidth / bgHeight;
+    if (aspectRatio > bgAspectRatio) {
+      $imgs.css({width: bgHeight * aspectRatio, height: bgHeight});
+      $imgs.css({marginTop: 0, marginLeft: (bgWidth - $imgs.width()) / 2});
+    } else {
+      $imgs.css({width: bgWidth, height: bgWidth / aspectRatio});
+      $imgs.css({marginTop: (bgHeight - $imgs.height()) / 2, marginLeft: 0});
+    }
+    $bg.addClass('active');
+  });
+  var i = 0;
+  function bgAnimation() {
+    var $img = $imgs.eq(i++ % $imgs.length);
+    var $nextImg = $img.next();
+    if (!$nextImg.length) {
+      $nextImg = $imgs.eq(0);
+    }
+    $img.css({zIndex: i + 1}).fadeOut('slow');
+    $nextImg.css({zIndex: i}).show();
+  }
+  $imgs.filter(':gt(0)').hide();
+  setInterval(bgAnimation, 5000);
+}
