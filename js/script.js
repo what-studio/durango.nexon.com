@@ -157,7 +157,7 @@ $('.youtube').each(function() {
 });
 
 // less than IE9
-if ($body.hasClass('ltie9')) {
+if (ltie9) {
   var $bg = $('<div class="bg">');
   $bg.append('<img src="bg/bg1.jpg" />');
   $bg.append('<img src="bg/bg2.jpg" />');

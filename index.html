@@ -39,6 +39,7 @@
       media="screen and (max-width: 768px)" />
     <!--[if lt IE 9]>
       <link rel="stylesheet" type="text/css" href="css/simple.css" />
+      <link rel="stylesheet" type="text/css" href="css/ltie9.css" />
     <![endif]-->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
@@ -47,7 +48,10 @@
   </head>
   <body>
     <!--[if lt IE 9]>
-      <script>document.body.setAttribute('class', 'ltie9');</script>
+    <script>
+      document.body.setAttribute('class', 'ltie9');
+      ltie9 = true;
+    </script>
     <![endif]-->
     <video width="302" height="170" autoplay loop>
       <source src="bg/bg.mp4" type="video/mp4" />
