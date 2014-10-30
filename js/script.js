@@ -22,6 +22,7 @@ if (since != year) {
 var $contents = $('.contents:eq(0)');
 var $view = $('.view:eq(0)');
 var $video = $('video:eq(0)');
+var $youtubes = $('.youtube');
 
 function show($elem) {
   return $elem.addClass('active');
@@ -51,6 +52,11 @@ History.Adapter.bind(window, 'anchorchange', function() {
     show($contents);
     $video.get(0).pause();
     $view.attr({href: '#' + hash});
+    // pause YouTube videos
+    $youtubes.find('iframe').each(function(i, iframe) {
+      var message = '{"event":"command","func":"pauseVideo","args":""}';
+      iframe.contentWindow.postMessage(message, '*');
+    });
   }
   // content
   var $articles = hide($contents.find('article'));
@@ -127,7 +133,7 @@ $win.on('resize', function() {
   });
 });
 
-$('.youtube').each(function() {
+$youtubes.each(function() {
   var $youtube = $(this);
   var $embed = $youtube.find('>:eq(0)');
   var aspectRatio = $embed.attr('height') / $embed.attr('width');
