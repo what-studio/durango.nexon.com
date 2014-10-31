@@ -52,11 +52,6 @@ History.Adapter.bind(window, 'anchorchange', function() {
     show($contents);
     $video.get(0).pause();
     $view.attr({href: '#' + hash});
-    // pause YouTube videos
-    $youtubes.find('iframe').each(function(i, iframe) {
-      var message = '{"event":"command","func":"pauseVideo","args":""}';
-      iframe.contentWindow.postMessage(message, '*');
-    });
   }
   // content
   var $articles = hide($contents.find('article'));
@@ -72,6 +67,11 @@ History.Adapter.bind(window, 'anchorchange', function() {
   }
   $contents.find('.nav .prev').attr({href: '#' + $prevArticle.attr('id')});
   $contents.find('.nav .next').attr({href: '#' + $nextArticle.attr('id')});
+  // pause hidden YouTube videos
+  $youtubes.filter(':hidden').find('iframe').each(function(i, iframe) {
+    var message = '{"event":"command","func":"pauseVideo","args":""}';
+    iframe.contentWindow.postMessage(message, '*');
+  });
 });
 
 $('article, .viewport').on('click', function(e) {
@@ -179,6 +179,9 @@ if ($body.hasClass('ltie9')) {
   }
   $imgs.filter(':gt(0)').hide();
   setInterval(bgAnimation, 5000);
+  $imgs.eq(0).on('load', function() {
+    $win.trigger('resize');
+  });
+} else {
+  $win.trigger('resize');
 }
-
-$win.trigger('resize');
