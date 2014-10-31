@@ -8,17 +8,28 @@
     <!-- metadata -->
     <meta name="keywords" content="Durango,듀랑고" />
     <meta name="title" content="야생의 땅: Durango" />
-    <meta name="description" content="" />
+    <meta name="description"
+      content="모바일 개척형 오픈월드 MMORPG &lt;야생의 땅: Durango&gt;" />
+    <meta name="author" content="What! Studio" />
     <!-- opengraph -->
     <meta name="og:site_name" content="야생의 땅: Durango" />
     <meta name="og:title" content="야생의 땅: Durango" />
-    <meta name="og:description" content="" />
-    <meta name="og:image" content="http://durango.nexon.com/image.png" />
+    <meta name="og:description"
+      content="모바일 개척형 오픈월드 MMORPG &lt;야생의 땅: Durango&gt;" />
+    <meta name="og:image" content="art/screenshot1.jpg" />
+    <meta name="og:image" content="art/screenshot2.jpg" />
+    <meta name="og:image" content="art/screenshot3.jpg" />
+    <meta name="og:image" content="art/screenshot4.jpg" />
+    <meta name="og:image" content="art/screenshot5.jpg" />
+    <meta name="og:image" content="art/conceptart1.jpg" />
+    <meta name="og:image" content="art/conceptart2.jpg" />
+    <meta name="og:image" content="art/conceptart3.jpg" />
+    <meta name="og:image" content="art/conceptart4.jpg" />
     <!-- twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="야생의 땅: Durango" />
-    <meta name="twitter:description" content="" />
-    <meta name="twitter:image" content="http://durango.nexon.com/image.png" />
+    <meta name="twitter:description"
+      content="모바일 개척형 오픈월드 MMORPG &lt;야생의 땅: Durango&gt;" />
     <!-- end -->
     <title>Durango</title>
     <link rel="shortcut icon" type="image/icon" href="favicon.ico" />
@@ -29,20 +40,19 @@
       media="screen and (max-width: 768px)" />
     <!--[if lt IE 9]>
       <link rel="stylesheet" type="text/css" href="css/simple.css" />
+      <link rel="stylesheet" type="text/css" href="css/ltie9.css" />
     <![endif]-->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
       </script>
     <![endif]-->
-    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js">
-    </script>
-    <script>
-      WebFont.load({google: {families: ['Roboto Condensed:300']}});
-    </script>
   </head>
   <body>
     <!--[if lt IE 9]>
-      <script>document.body.setAttribute('class', 'ltie9');</script>
+    <script>
+      document.body.setAttribute('class', 'ltie9');
+      ltie9 = true;
+    </script>
     <![endif]-->
     <video width="302" height="170" autoplay loop>
       <source src="bg/bg.mp4" type="video/mp4" />
@@ -59,19 +69,15 @@
       </div>
       <div class="viewport">
         <article id="museum">
-          <div class="youtube content">
-            <iframe width="640" height="360" frameborder="0" src="
-              //www.youtube.com/embed/xQSAbBx2bnE?
-              rel=0&amp;showinfo=0&amp;autohide=0&amp;enablejsapi=1"
-              allowfullscreen="true"></iframe>
+          <div class="youtube content"
+            data-youtube="xQSAbBx2bnE"
+            data-aspect-ratio="16:9">
           </div>
         </article>
         <article id="teaser">
-          <div class="youtube content">
-            <iframe width="640" height="360" frameborder="0" src="
-              //www.youtube.com/embed/tvxmnqTxovg?
-              rel=0&amp;showinfo=0&amp;autohide=0&amp;enablejsapi=1"
-              allowfullscreen="true"></iframe>
+          <div class="youtube content"
+            data-youtube="tvxmnqTxovg"
+            data-aspect-ratio="16:9">
           </div>
         </article>
         <article id="screenshot1">
@@ -104,17 +110,17 @@
       </div>
     </section>
     <section class="social">
-      <div id="fb-root">
-        <div class="fb-like"
-          data-href="http://durango.nexon.com/"
-          data-action="like"
-          data-layout="button_count"
-          data-show-faces="false"
-          data-share="false"></div>
-      </div>
+      <div class="fb-like"
+        data-href="http://durango.nexon.com/"
+        data-action="like"
+        data-layout="button_count"
+        data-show-faces="false"
+        data-share="false"></div>
       <div class="twitter-share">
         <a href="https://twitter.com/share" class="twitter-share-button"
-          data-url="http://durango.nexon.com/" data-text="Durango">Tweet</a>
+          data-url="http://durango.nexon.com/"
+          data-text="모바일 개척형 MMORPG &lt;야생의 땅: 듀랑고&gt;"
+          data-hashtags="듀랑고,Durango">Tweet</a>
       </div>
     </section>
     <footer>
@@ -125,11 +131,17 @@
         &copy; <span class="year">2014</span> Nexon Corp.
       </p>
     </footer>
+    <div id="fb-root"></div>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/history.js/1.8/native.history.min.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/script.js"></script>
     <script src="js/social.js"></script>
     <script src="js/ga.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js">
+    </script>
+    <script>
+      WebFont.load({google: {families: ['Roboto Condensed:300']}});
+    </script>
   </body>
 </html>

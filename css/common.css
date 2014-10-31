@@ -22,7 +22,6 @@ a:link img, a:visited img {
 
 .social {
   line-height: 1;
-  overflow: hidden;
   font-size: 0;
   color: rgba(0, 0, 0, 0);
 }
@@ -37,11 +36,16 @@ a:link img, a:visited img {
   width: auto !important;
 }
 
+.social .fb-like iframe {
+  max-height: 400px;
+}
+
 .youtube {
   position: relative;
   overflow: hidden;
   height: 0;
   margin: 0 auto;
+  background: #000;
 }
 
 .youtube iframe, .youtube object, .youtube embed {

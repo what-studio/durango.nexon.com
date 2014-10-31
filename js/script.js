@@ -32,6 +32,24 @@ function hide($elem) {
   return $elem.removeClass('active');
 }
 
+function switchYoutube() {
+  var $youtubes = $('.youtube');
+  $youtubes.each(function() {
+    var $youtube = $(this);
+    if ($youtube.is(':hidden')) {
+      $youtube.find('iframe').remove();
+    } else if (!$youtube.find('iframe').length) {
+      var $iframe = $('<iframe frameborder="0" allowfullscreen="true">');
+      var youtube = $youtube.data('youtube');
+      $iframe.attr({
+        src: '//youtube.com/embed/' + youtube +
+             '?rel=0&showinfo=0&autoplay=1&enablejsapi=1'
+      });
+      $youtube.append($iframe);
+    }
+  });
+}
+
 var _prevHash = null;
 History.Adapter.bind(window, 'anchorchange', function() {
   var hash = History.getHash();
@@ -46,6 +64,7 @@ History.Adapter.bind(window, 'anchorchange', function() {
     _ga('send', 'pageview', '/');
     hide($contents);
     $video.get(0).play();
+    switchYoutube();
     return;
   } else {
     _ga('send', 'pageview', '/#' + hash, '/#' + hash);
@@ -56,6 +75,7 @@ History.Adapter.bind(window, 'anchorchange', function() {
   // content
   var $articles = hide($contents.find('article'));
   var $article = show($contents.find('#' + hash));
+  switchYoutube();
   // navigators
   var $prevArticle = $article.prev();
   var $nextArticle = $article.next();
@@ -131,17 +151,20 @@ $win.on('resize', function() {
     left: Math.min(0, ($parent.width() - width) / 2),
     top: Math.min(0, ($parent.height() - height) / 2)
   });
+  switchYoutube();
 });
 
 $youtubes.each(function() {
   var $youtube = $(this);
   var $embed = $youtube.find('>:eq(0)');
-  var aspectRatio = $embed.attr('height') / $embed.attr('width');
-  $youtube.css({paddingBottom: aspectRatio * 100 + '%'});
+  var aspectRatioString = $youtube.data('aspect-ratio');
+  var aspectRatioArray = aspectRatioString.split(':');
+  var aspectRatio = Number(aspectRatioArray[0]) / Number(aspectRatioArray[1]);
+  $youtube.css({paddingBottom: 1 / aspectRatio * 100 + '%'});
 });
 
 // less than IE9
-if ($body.hasClass('ltie9')) {
+if (window.ltie9) {
   var $bg = $('<div class="bg">');
   $bg.append('<img src="bg/bg1.jpg" />');
   $bg.append('<img src="bg/bg2.jpg" />');
