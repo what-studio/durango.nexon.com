@@ -36,17 +36,19 @@ function switchYoutube() {
   var $youtubes = $('.youtube');
   $youtubes.each(function() {
     var $youtube = $(this);
-    if ($youtube.is(':hidden')) {
-      $youtube.find('iframe').remove();
-    } else if (!$youtube.find('iframe').length) {
-      var $iframe = $('<iframe frameborder="0" allowfullscreen="true">');
+    var $iframe = $youtube.find('iframe');
+    if (!$iframe.length) {
       var youtube = $youtube.data('youtube');
+      $iframe = $('<iframe frameborder="0" allowfullscreen="true">');
       $iframe.attr({
         src: '//youtube.com/embed/' + youtube +
-             '?rel=0&showinfo=0&autoplay=1&enablejsapi=1'
+             '?rel=0&showinfo=0&enablejsapi=1'
       });
       $youtube.append($iframe);
     }
+    var func = $youtube.is(':visible') ? 'playVideo' : 'pauseVideo';
+    var message = '{"event":"command","func":"' + func + '","args":""}';
+    $iframe.get(0).contentWindow.postMessage(message, '*');
   });
 }
 
@@ -87,11 +89,6 @@ History.Adapter.bind(window, 'anchorchange', function() {
   }
   $contents.find('.nav .prev').attr({href: '#' + $prevArticle.attr('id')});
   $contents.find('.nav .next').attr({href: '#' + $nextArticle.attr('id')});
-  // pause hidden YouTube videos
-  $youtubes.filter(':hidden').find('iframe').each(function(i, iframe) {
-    var message = '{"event":"command","func":"pauseVideo","args":""}';
-    iframe.contentWindow.postMessage(message, '*');
-  });
 });
 
 $('article, .viewport').on('click', function(e) {
